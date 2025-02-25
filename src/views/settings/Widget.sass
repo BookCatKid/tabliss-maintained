@@ -2,19 +2,58 @@
     border: none
     border-radius: 0.5rem
     background: #ecf0f1
-    margin: 1em 0
     padding: 1em
+    touch-action: none
+    user-select: none
+
+    &:hover
+        background: #e8ecef
 
     h4
         margin: 0
+        display: inline-block
 
     .title--buttons
-        button
-            float: right
-            margin: -0.25em 0 0 0.5em
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+        
+        .drag-handle
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            color: #666
+            font-size: 1.2em
+            margin-right: 0.5em
+            opacity: 0.6
+            transition: opacity 0.2s ease, color 0.2s ease
+            user-select: none
+            touch-action: none
+            
+            &:hover
+                opacity: 1
+                color: #333
+                cursor: grab
+            
+            &:active
+                cursor: grabbing
+        
+        .title-section
+            display: flex
+            align-items: center
+            flex: 1
+
+        .button-section
+            display: flex
+            align-items: center
+            margin-left: auto
+
+            button
+                margin-left: 0.5em
 
         h4
             cursor: pointer
+            margin: 0
 
     .settings
         margin: 1.5rem 0

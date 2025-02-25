@@ -3,7 +3,7 @@ import { setWidgetDisplay } from "../../db/action";
 import { WidgetState } from "../../db/state";
 import { useToggle } from "../../hooks";
 import { getConfig } from "../../plugins";
-import { DownIcon, Icon, IconButton, RemoveIcon, UpIcon } from "../shared";
+import { Icon, IconButton, RemoveIcon } from "../shared";
 import PluginContainer from "../shared/Plugin";
 import ToggleSection from "../shared/ToggleSection";
 import "./Widget.sass";
@@ -14,6 +14,7 @@ interface Props {
   onMoveUp?: () => void;
   onMoveDown?: () => void;
   onRemove: () => void;
+  dragHandle?: React.ReactNode;
 }
 
 const Widget: React.FC<Props> = ({
@@ -21,42 +22,32 @@ const Widget: React.FC<Props> = ({
   onMoveDown,
   onMoveUp,
   onRemove,
+  dragHandle,
 }) => {
   const [isOpen, toggleIsOpen] = useToggle(onRemove === undefined);
-
   const { description, name, settingsComponent } = getConfig(plugin.key);
-
   const setDisplay = setWidgetDisplay.bind(null, plugin.id);
 
   return (
     <fieldset className="Widget">
       <div className="title--buttons">
-        <IconButton onClick={onRemove} title="Remove widget">
-          <RemoveIcon />
-        </IconButton>
-
-        <IconButton
-          onClick={toggleIsOpen}
-          title={`${isOpen ? "Close" : "Edit"} widget settings`}
-        >
-          <Icon name="settings" />
-        </IconButton>
-
-        {onMoveDown && (
-          <IconButton onClick={onMoveDown} title="Move widget down">
-            <DownIcon />
+        <div className="title-section">
+          {dragHandle}
+          <h4 onClick={toggleIsOpen}>{name}</h4>
+        </div>
+        <div className="button-section">
+          <IconButton
+            onClick={toggleIsOpen}
+            title={`${isOpen ? "Close" : "Edit"} widget settings`}
+          >
+            <Icon name="settings" />
           </IconButton>
-        )}
-
-        {onMoveUp && (
-          <IconButton onClick={onMoveUp} title="Move widget up">
-            <UpIcon />
+          <IconButton onClick={onRemove} title="Remove widget">
+            <RemoveIcon />
           </IconButton>
-        )}
-
-        <h4 onClick={toggleIsOpen}>{name}</h4>
-        {!isOpen && <p>{description}</p>}
+        </div>
       </div>
+      {!isOpen && description && <p>{description}</p>}
 
       {isOpen && (
         <div>

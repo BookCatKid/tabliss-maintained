@@ -3,7 +3,12 @@
   "compilerOptions": {
     "incremental": true,
     "module": "commonjs",
-    "outDir": "dist/test"
+    "outDir": "dist/test",
+    "jsx": "react",
+    "types": ["jest", "react", "react-dom", "webextension-polyfill"],
+    "lib": ["esnext", "dom"],
+    "esModuleInterop": true, // Ensure this is set for compatibility
+    "allowSyntheticDefaultImports": true // Ensure this is set for compatibility
   },
   "exclude": []
 }
