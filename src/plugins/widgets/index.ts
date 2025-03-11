@@ -24,6 +24,7 @@ import joke from "./joke";
 import CustomText from "./customText";
 import bookmarks from "./bookmarks";
 import binarytime from "./binaryTime";
+import stocks from "./stocks";
 
 export const widgetConfigs = [
   countdown,
@@ -44,6 +45,7 @@ export const widgetConfigs = [
   nba,
   quote,
   search,
+  stocks,
   time,
   todo,
   weather,
