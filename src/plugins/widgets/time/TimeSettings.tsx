@@ -1,20 +1,27 @@
 import React, { FC } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, defineMessages } from "react-intl";
 import { Props, defaultData } from "./types";
 import TimeZoneInput from "../../../views/shared/timeZone/TimeZoneInput";
+
+const messages = defineMessages({
+  namePlaceholder: {
+    id: "plugins.time.namePlaceholder",
+    defaultMessage: "Optional name",
+    description: "Placeholder text for name input"
+  }
+});
 
 const TimeSettings: FC<Props> = ({ data = defaultData, setData }) => (
   <div className="TimeSettings">
     <label>
       <FormattedMessage
-          id="plugins.name"
+          id="plugins.time.yourName"
           defaultMessage="Name"
           description="Name title"
         />
       <input
         type="text"
         value={data.name}
-        placeholder="Optional name"
         onChange={(event) => setData({ ...data, name: event.target.value })}
       />
     </label>

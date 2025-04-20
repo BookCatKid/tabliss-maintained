@@ -14,10 +14,11 @@ const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => (
     {data.latitude && data.latitude ? (
       <>
         <label>
+
         <FormattedMessage
-          id="plugins.weather.name"
-          defaultMessage="Name"
-          description="Name weather title"
+          id="plugins.weather.locationName"
+          defaultMessage="Location name"
+          description="Location name title"
         />
 
           <input

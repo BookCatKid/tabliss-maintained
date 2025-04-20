@@ -5,11 +5,11 @@ import { Props, defaultData } from "./types";
 const GreetingSettings: FC<Props> = ({ data = defaultData, setData }) => (
   <div className="GreetingSettings">
     <label>
-    <FormattedMessage
-          id="plugins.greeting.name"
-          defaultMessage="Name"
-          description="Name title"
-        />
+      <FormattedMessage
+        id="plugins.greeting.yourName"
+        defaultMessage="Name"
+        description="Name title"
+      />
       <input
         type="text"
         value={data.name}

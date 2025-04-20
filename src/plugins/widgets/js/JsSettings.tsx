@@ -22,7 +22,7 @@ const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
         />
       </label>
 
-      <button onClick={handleSave}><FormattedMessage
+      <button onClick={handleSave} className="button button--primary"><FormattedMessage
           id="plugins.apply"
           defaultMessage="Apply"
           description="Apply title"

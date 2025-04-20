@@ -1,12 +1,19 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { capitalize } from "../../../utils";
 import { defaultData, Data, Props } from "./types";
 
 const colors = ["mempool", "monochrome", "transparent"];
 
 const BitcoinSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
-  <div className="MessageSettings">
-    <h5>Color</h5>
+  <div className="BitcoinSettings">
+    <h5>
+      <FormattedMessage
+        id="plugins.bitcoin.colorLabel"
+        defaultMessage="Color"
+        description="Label for color selection"
+      />
+    </h5>
     {colors.map((color) => (
       <label key={color}>
         <input
@@ -22,7 +29,11 @@ const BitcoinSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
 
     <label>
       <br />
-      Number of Blocks <br />
+      <FormattedMessage
+        id="plugins.bitcoin.blocksLabel"
+        defaultMessage="Number of Blocks"
+        description="Label for number of blocks slider"
+      /> <br />
       <input
         type="range"
         list="numberOfBlocks-markers"
